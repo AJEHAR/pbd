@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════
-// TERJEMAHAN — Bahasa Malaysia & English
+// LANG.JS — Terjemahan BM & EN
 // ═══════════════════════════════════════════════════════════════
 
 const LANG = {
@@ -10,7 +10,7 @@ const LANG = {
     heroTajuk      : 'Sistem Pengurusan Fail PBD',
     heroSub        : 'Portal rasmi pengurusan fail penilaian bilik darjah',
     filterSemLabel : 'Semester',
-    filterTahunLabel : 'Tahun',
+    filterTahunLabel: 'Tahun',
     filterSemAll   : 'Semua Semester',
     filterTahunAll : 'Semua Tahun',
     btnTapis       : 'Tapis',
@@ -74,7 +74,6 @@ const LANG = {
     colStatus : 'Status',
     tiAdaLog  : 'Tiada log dijumpai.',
 
-    drawerLangBtn : '🌐 Switch to English',
     footer : 'Sistem Pengurusan Fail PBD © 2026 SK Pendidikan Khas Kuantan',
   },
 
@@ -85,7 +84,7 @@ const LANG = {
     heroTajuk      : 'PBD File Management System',
     heroSub        : 'Official portal for classroom assessment file management',
     filterSemLabel : 'Semester',
-    filterTahunLabel : 'Year',
+    filterTahunLabel: 'Year',
     filterSemAll   : 'All Semesters',
     filterTahunAll : 'All Years',
     btnTapis       : 'Filter',
@@ -149,47 +148,66 @@ const LANG = {
     colStatus : 'Status',
     tiAdaLog  : 'No log entries found.',
 
-    drawerLangBtn : '🌐 Tukar ke Bahasa Malaysia',
     footer : 'PBD File Management System © 2026 SK Pendidikan Khas Kuantan',
   },
 };
 
-// ── Bahasa semasa ─────────────────────────
+// ── State ─────────────────────────────────
 let currentLang = localStorage.getItem('pbd_lang') || 'BM';
 
 function getLang() {
   return LANG[currentLang];
 }
 
+// ── Toggle bahasa ─────────────────────────
 function toggleLang() {
   currentLang = currentLang === 'BM' ? 'EN' : 'BM';
   localStorage.setItem('pbd_lang', currentLang);
   applyLang();
 }
 
+// ── Apply terjemahan ke semua elemen ──────
 function applyLang() {
   const L = getLang();
 
-  // Update teks biasa
+  // Teks biasa
   document.querySelectorAll('[data-lang]').forEach(el => {
     const key = el.getAttribute('data-lang');
     if (L[key] !== undefined) el.textContent = L[key];
   });
 
-  // Update placeholder
+  // Placeholder input
   document.querySelectorAll('[data-ph]').forEach(el => {
     const key = el.getAttribute('data-ph');
     if (L[key] !== undefined) el.placeholder = L[key];
   });
 
-  // Update desktop lang toggle button
-  const btnDesktop = document.getElementById('langToggle');
-  if (btnDesktop) btnDesktop.textContent = currentLang === 'BM' ? 'EN' : 'BM';
+  // Butang toggle bahasa (desktop)
+  const btnD = document.getElementById('langToggle');
+  if (btnD) btnD.textContent = currentLang === 'BM' ? 'EN' : 'BM';
 
-  // Update drawer lang button — guna key khas, bukan data-lang
-  const btnDrawer = document.getElementById('langToggleDrawer');
-  if (btnDrawer) btnDrawer.textContent = L.drawerLangBtn;
+  // Butang toggle bahasa (drawer)
+  const btnDr = document.getElementById('langToggleDrawer');
+  if (btnDr) {
+    btnDr.textContent = currentLang === 'BM'
+      ? '🌐 Switch to English'
+      : '🌐 Tukar ke Bahasa Malaysia';
+  }
 
-  // Update html lang attribute
+  // HTML lang attribute
   document.documentElement.lang = currentLang === 'BM' ? 'ms' : 'en';
 }
+
+// ── Bind butang bahasa apabila DOM siap ───
+document.addEventListener('DOMContentLoaded', () => {
+  // Desktop toggle
+  const btnD = document.getElementById('langToggle');
+  if (btnD) btnD.addEventListener('click', toggleLang);
+
+  // Drawer toggle
+  const btnDr = document.getElementById('langToggleDrawer');
+  if (btnDr) btnDr.addEventListener('click', toggleLang);
+
+  // Apply bahasa semasa
+  applyLang();
+});

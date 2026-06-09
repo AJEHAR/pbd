@@ -1,29 +1,12 @@
 // ═══════════════════════════════════════════════════════════════
-// HALAMAN UTAMA — Senarai Fail
+// MAIN.JS — Halaman Utama (Senarai Fail)
 // ═══════════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Set maklumat sekolah
-  setSchoolInfo();
-
-  // Apply bahasa
-  applyLang();
-
-  // Load filter options
   await loadFilterOptions();
-
-  // Load semua fail
   await loadSenaraiFail();
-
-  // Bind events
-  bindEvents();
+  bindFilterEvents();
 });
-
-// ── Set maklumat sekolah ──────────────────
-function setSchoolInfo() {
-  const logos = document.querySelectorAll('.school-logo');
-  logos.forEach(el => { el.src = CONFIG.SCHOOL_LOGO; el.alt = CONFIG.SCHOOL_NAME_BM; });
-}
 
 // ── Load pilihan filter ───────────────────
 async function loadFilterOptions() {
@@ -121,21 +104,19 @@ function renderSenaraiFail(data) {
       </div>
       <div class="table-wrapper">
         <table>
-          <thead>
-            <tr>
-              <th>${L.colBil}</th>
-              <th>${L.colNama}</th>
-              <th>${L.colLink}</th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th>${L.colBil}</th>
+            <th>${L.colNama}</th>
+            <th>${L.colLink}</th>
+          </tr></thead>
           <tbody>`;
 
     senarai.forEach((fail, idx) => {
       html += `
-            <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
-              <td class="td-bil">${idx + 1}</td>
-              <td class="td-nama">${escHtml(fail.nama)}</td>
-              <td class="td-link">`;
+          <tr class="${idx % 2 === 0 ? 'row-even' : 'row-odd'}">
+            <td class="td-bil">${idx + 1}</td>
+            <td class="td-nama">${escHtml(fail.nama)}</td>
+            <td class="td-link">`;
 
       if (fail.link) {
         html += `<a href="${escHtml(fail.link)}" target="_blank" rel="noopener" class="btn-buka">${L.btnBuka}</a>`;
@@ -156,8 +137,8 @@ function renderSenaraiFail(data) {
   container.innerHTML = html;
 }
 
-// ── Bind events ───────────────────────────
-function bindEvents() {
+// ── Bind filter events ────────────────────
+function bindFilterEvents() {
   const btnTapis = document.getElementById('btnTapis');
   const btnReset = document.getElementById('btnReset');
 
