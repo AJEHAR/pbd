@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="navbar-brand">
       <img class="school-logo" src="" alt="Logo Sekolah">
@@ -19,20 +19,20 @@
         <small>Sistem Pengurusan Fail PBD</small>
       </div>
     </a>
-
     <ul class="navbar-nav">
       <li><a href="index.html" class="active" data-lang="navSenarai">Senarai Fail</a></li>
       <li><a href="admin.html" data-lang="navAdmin">Panel Admin</a></li>
-      <li><button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button></li>
+      <li><button class="btn-lang" id="langToggle">EN</button></li>
     </ul>
-
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- Mobile drawer -->
-  <div class="drawer-overlay" id="drawerOverlay" onclick="closeMenu()"></div>
+  <!-- DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- DRAWER -->
   <div class="drawer" id="drawer">
     <div class="drawer-header">
       <img class="school-logo drawer-logo" src="" alt="Logo">
@@ -40,68 +40,55 @@
         <strong>SK Pendidikan Khas Kuantan</strong>
         <small>Sistem Pengurusan Fail PBD</small>
       </div>
-      <button class="drawer-close" onclick="closeMenu()">✕</button>
+      <button class="drawer-close" id="drawerClose">✕</button>
     </div>
     <ul class="drawer-nav">
       <li><a href="index.html" class="active" data-lang="navSenarai">Senarai Fail</a></li>
       <li><a href="admin.html" data-lang="navAdmin">Panel Admin</a></li>
     </ul>
     <div class="drawer-footer">
-      <button class="btn-lang-drawer" id="langToggleDrawer" onclick="toggleLang()">🌐 Switch to English</button>
+      <button class="btn-lang-drawer" id="langToggleDrawer">🌐 Switch to English</button>
     </div>
   </div>
 
-  <!-- ── HERO ── -->
+  <!-- HERO -->
   <div class="hero">
     <h1 data-lang="heroTajuk">Sistem Pengurusan Fail PBD</h1>
     <p data-lang="heroSub">Portal rasmi pengurusan fail penilaian bilik darjah</p>
   </div>
 
-  <!-- ── CONTENT ── -->
+  <!-- CONTENT -->
   <div class="container">
-
     <div class="filter-bar">
       <label data-lang="filterSemLabel">Semester</label>
       <select id="filterSem">
         <option value="" data-lang="filterSemAll">Semua Semester</option>
       </select>
-
       <label data-lang="filterTahunLabel">Tahun</label>
       <select id="filterTahun">
         <option value="" data-lang="filterTahunAll">Semua Tahun</option>
       </select>
-
       <button class="btn btn-primary" id="btnTapis" data-lang="btnTapis">Tapis</button>
       <button class="btn btn-outline" id="btnReset" data-lang="btnReset">Reset</button>
     </div>
-
     <div id="failContainer">
       <div class="loading">
         <div class="spinner"></div>
         <p data-lang="memuatData">Memuatkan data...</p>
       </div>
     </div>
-
   </div>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p data-lang="footer">Sistem Pengurusan Fail PBD © 2026 SK Pendidikan Khas Kuantan</p>
   </footer>
 
+  <!-- TIADA INLINE SCRIPT — semua dalam fail JS berasingan -->
   <script src="js/config.js"></script>
   <script src="js/lang.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    function toggleMenu() {
-      document.getElementById('drawer').classList.toggle('open');
-      document.getElementById('drawerOverlay').classList.toggle('open');
-      document.getElementById('hamburger').classList.toggle('active');
-    }
-    function closeMenu() {
-      document.getElementById('drawer').classList.remove('open');
-      document.getElementById('drawerOverlay').classList.remove('open');
-      document.getElementById('hamburger').classList.remove('active');
-    }
-  </script>
+
 </body>
 </html>
