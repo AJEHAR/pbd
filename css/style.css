@@ -916,3 +916,21 @@ tbody tr:last-child td { border-bottom: none; }
   .filter-bar select { width: 100%; }
   .filter-bar .btn { width: 100%; }
 }
+
+
+/* ── FIX: Hero section — buang logo, compact pada mobile ── */
+.hero-logo { display: none; } /* Logo cukup dalam navbar sahaja */
+
+.hero {
+  padding: 28px 20px 24px;
+}
+
+.hero h1 { font-size: 20px; }
+.hero p   { font-size: 13px; }
+
+@media (max-width: 768px) {
+  .hero     { padding: 20px 16px; }
+  .hero h1  { font-size: 17px; }
+  .admin-hero     { padding: 20px 16px; }
+  .admin-hero h1  { font-size: 17px; }
+}
