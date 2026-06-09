@@ -20,20 +20,14 @@
       </div>
     </a>
 
-    <!-- Desktop nav -->
-    <ul class="navbar-nav" id="navMenu">
+    <ul class="navbar-nav">
       <li><a href="index.html" data-lang="navSenarai">Senarai Fail</a></li>
       <li><a href="admin.html" class="active" data-lang="navAdmin">Panel Admin</a></li>
-      <li>
-        <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
-      </li>
+      <li><button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button></li>
     </ul>
 
-    <!-- Hamburger button (mobile) -->
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -53,7 +47,7 @@
       <li><a href="admin.html" class="active" data-lang="navAdmin">Panel Admin</a></li>
     </ul>
     <div class="drawer-footer">
-      <button class="btn-lang-drawer" id="langToggleDrawer" onclick="toggleLang()">🌐 Tukar ke English</button>
+      <button class="btn-lang-drawer" id="langToggleDrawer" onclick="toggleLang()">🌐 Switch to English</button>
     </div>
   </div>
 
@@ -66,7 +60,6 @@
   <!-- ── CONTENT ── -->
   <div class="container">
 
-    <!-- Auth Card -->
     <div class="auth-card">
       <h3 data-lang="labelKey">Kata Kunci Rahsia</h3>
       <div class="auth-row">
@@ -83,13 +76,10 @@
       <p class="key-status" id="keyStatus"></p>
     </div>
 
-    <!-- Admin Layout -->
     <div class="admin-layout">
 
-      <!-- Kiri: Skop + Operasi -->
       <div class="panel-left">
 
-        <!-- Skop -->
         <div class="card">
           <p class="card-title" data-lang="skopOperasi">Skop Operasi</p>
           <div class="scope-row">
@@ -102,7 +92,6 @@
           </div>
         </div>
 
-        <!-- Operasi -->
         <div class="card actions-card locked" id="actionsCard">
           <p class="card-title" data-lang="operasi">Operasi</p>
 
@@ -165,16 +154,13 @@
         </div>
       </div>
 
-      <!-- Kanan: Keputusan + Log -->
       <div class="panel-right">
 
-        <!-- Keputusan -->
         <div class="card result-panel" id="resultPanel">
           <p class="card-title" data-lang="keputusan">Keputusan Operasi</p>
           <div class="result-body" id="resultBody"></div>
         </div>
 
-        <!-- Log terkini -->
         <div class="card">
           <p class="card-title" data-lang="logTajuk">Log Aktiviti Terkini</p>
           <div class="log-table-wrapper">
@@ -199,12 +185,10 @@
     </div>
   </div>
 
-  <!-- ── FOOTER ── -->
   <footer class="footer">
     <p data-lang="footer">Sistem Pengurusan Fail PBD © 2026 SK Pendidikan Khas Kuantan</p>
   </footer>
 
-  <!-- Modal Confirm -->
   <div class="modal" id="modal">
     <div class="modal-box">
       <p class="modal-msg" id="modalMsg"></p>
@@ -215,7 +199,6 @@
     </div>
   </div>
 
-  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
   <script src="js/config.js"></script>
