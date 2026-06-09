@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senarai Fail PBD — SK Pendidikan Khas Kuantan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img class="school-logo" src="" alt="Logo Sekolah">
+      <div class="navbar-title">
+        SK Pendidikan Khas Kuantan
+        <small>Sistem Pengurusan Fail PBD</small>
+      </div>
+    </a>
+
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="active" data-lang="navSenarai">Senarai Fail</a></li>
+      <li><a href="admin.html" data-lang="navAdmin">Panel Admin</a></li>
+    </ul>
+
+    <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <img class="school-logo hero-logo" src="" alt="Logo Sekolah">
+    <h1 data-lang="heroTajuk">Sistem Pengurusan Fail PBD</h1>
+    <p data-lang="heroSub">Portal rasmi pengurusan fail penilaian bilik darjah</p>
+  </div>
+
+  <!-- ── CONTENT ── -->
+  <div class="container">
+
+    <!-- Filter -->
+    <div class="filter-bar">
+      <label data-lang="filterSemLabel">Semester</label>
+      <select id="filterSem">
+        <option value="" data-lang="filterSemAll">Semua Semester</option>
+      </select>
+
+      <label data-lang="filterTahunLabel">Tahun</label>
+      <select id="filterTahun">
+        <option value="" data-lang="filterTahunAll">Semua Tahun</option>
+      </select>
+
+      <button class="btn btn-primary" id="btnTapis" data-lang="btnTapis">Tapis</button>
+      <button class="btn btn-outline" id="btnReset"  data-lang="btnReset">Reset</button>
+    </div>
+
+    <!-- Senarai Fail -->
+    <div id="failContainer">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p data-lang="memuatData">Memuatkan data...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p data-lang="footer">Sistem Pengurusan Fail PBD © 2026 SK Pendidikan Khas Kuantan</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
