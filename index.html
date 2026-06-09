@@ -20,13 +20,42 @@
       </div>
     </a>
 
-    <ul class="navbar-nav">
+    <!-- Desktop nav -->
+    <ul class="navbar-nav" id="navMenu">
+      <li><a href="index.html" class="active" data-lang="navSenarai">Senarai Fail</a></li>
+      <li><a href="admin.html" data-lang="navAdmin">Panel Admin</a></li>
+      <li>
+        <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
+      </li>
+    </ul>
+
+    <!-- Hamburger button (mobile) -->
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeMenu()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <img class="school-logo drawer-logo" src="" alt="Logo">
+      <div class="drawer-school">
+        <strong>SK Pendidikan Khas Kuantan</strong>
+        <small>Sistem Pengurusan Fail PBD</small>
+      </div>
+      <button class="drawer-close" onclick="closeMenu()">✕</button>
+    </div>
+    <ul class="drawer-nav">
       <li><a href="index.html" class="active" data-lang="navSenarai">Senarai Fail</a></li>
       <li><a href="admin.html" data-lang="navAdmin">Panel Admin</a></li>
     </ul>
-
-    <button class="btn-lang" id="langToggle" onclick="toggleLang()">EN</button>
-  </nav>
+    <div class="drawer-footer">
+      <button class="btn-lang-drawer" id="langToggleDrawer" onclick="toggleLang()">🌐 Tukar ke English</button>
+    </div>
+  </div>
 
   <!-- ── HERO ── -->
   <div class="hero">
@@ -72,5 +101,26 @@
   <script src="js/config.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('drawer').classList.toggle('open');
+      document.getElementById('drawerOverlay').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+    }
+    // Update drawer lang button text
+    const origApplyLang = typeof applyLang === 'function' ? applyLang : () => {};
+    function applyLang() {
+      origApplyLang();
+      const btn = document.getElementById('langToggleDrawer');
+      if (btn) btn.textContent = currentLang === 'BM'
+        ? '🌐 Switch to English'
+        : '🌐 Tukar ke Bahasa Malaysia';
+    }
+  </script>
 </body>
 </html>
